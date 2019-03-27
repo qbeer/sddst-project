@@ -15,11 +15,14 @@
 \usepackage{listings}
 \usepackage{color}
 \usepackage{multicol}
+\usepackage{natbib}
 
 
 \definecolor{mygray}{rgb}{0.4,0.4,0.4}
 \definecolor{mygreen}{rgb}{0,0.8,0.6}
 \definecolor{myorange}{rgb}{1.0,0.4,0}
+
+\setlength\columnsep{15pt} 
 
 \lstset{
 basicstyle=\footnotesize\sffamily\color{black},
@@ -52,7 +55,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 
 \usepackage{float}
 \renewcommand\thesection{\Roman{section}.}
-\renewcommand\thesubsection{\arabic{subsection}.}
+\renewcommand\thesubsection{\thesection.\arabic{subsection}.}
 
 \title{Simple Discrete Dislocation Dynamics Toolkit\newline\textbf{Mid term report}}
 
@@ -73,7 +76,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 
 \begin{abstract}
 	During these weeks my task was to experiment with the
-	SDDDST software package that is a dislocation dynamics
+	SDDDST software package \cite{sdddst} that is a dislocation dynamics
 	simulation library written in C++ by Gábor Péterffy. This
 	few weeks gave me a basic understanding of dislocations and the
 	simulation itself. I was able to visualize, calculate predefined and
@@ -83,10 +86,9 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 \newpage
 
 \begin{multicols*}{2}
-	[
-		\section{Basic understanding and software installation}
-		\vspace{0.1cm}
-	]
+
+	\section{Basics}
+	\vspace{0.2cm}
 
 	\subsection{Theory}
 
@@ -101,7 +103,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 	describe the basic geometry of an edge and
 	a screw dislocation line. All the atoms in
 	a perfect crystal are at specific atomic
-	sites (ignoring thermal vibrations).
+	sites (ignoring thermal vibrations). \cite{random}
 
 	\vspace{0.1cm}
 
@@ -117,7 +119,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 	but maintain their identity. Two dislocations
 	of opposite orientation can cancel when
 	brought together, but a single dislocation
-	typically cannot disappear on its own.
+	typically cannot disappear on its own. \cite{wiki}
 
 	\subsection{Installation}
 
@@ -380,7 +382,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 
 	\par This resembles to the ELTE field as it should, since the offdiagonal
 	components are were displayed previously by my visualization programs.
-	
+
 	\begin{minipage}[t]{0.42\columnwidth}
 		\centering
 		\includegraphics[width=0.8\columnwidth]{elte_stress_field_TAU_XY_flipped.png}
@@ -473,8 +475,81 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 		\caption{Fixed stress rate - $0.1$}
 	\end{figure}
 
-	\par The interesting peaks can be the reuslt of the system starting to behave 
+	\par The interesting peaks can be the reuslt of the system starting to behave
 	as a fluid due to the force and continually growing speeds.
-	
+
+	\subsection{Average distance test}
+
+	\par Given a constant external stress the dislocations should get on average closer
+	to each other. At each step I extracted the avarage of minimum pair distances. Meaning that at each step
+	I calculated the minimum pair distances for each dislocation and output the avarage of that to
+	the standard output.
+
+	\par I used the ELTE stress field, with a $0.01$ external field applied and ran
+	the simulation on 32, 64, 128 random dislocation sets.
+
+	\par I ran them through a simulation to relax the input system and then provied the randomly
+	generated data as input to the external stress applied run.
+
+	\par The system containing 32 dislocations ran fastly for long maximum time but the one with 64 and 128 were slow to run
+	for even a $100$ limit simulation time.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\columnwidth]{./32.png}
+		\caption{System with 32 dislocations}
+		\label{fig:32}
+	\end{figure}
+
+	\par On this figure \ref{fig:32} it can be evaluated easilly that the average minimum distances
+	are lowering while there are still these wiggly peaks due to dislocations repenting each other while
+	getting really close.
+
+	\par With bigger system sizes data grow fastly and time did not increase that much while this
+	minimum pair distance lowered less significantly.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\columnwidth]{./64.png}
+		\caption{System with 64 dislocations}
+	\end{figure}
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\columnwidth]{./64_long.png}
+		\caption{System with 64 dislocations}
+		\label{fig:64}
+	\end{figure}
+
+	\par Where \ref{fig:64} is run for significantly longer (for twice the amount of original run time $100$ provided).
+	Lowering can be seen on these figures but with an expanding system size wiggliness
+	is worsening due to average repulsion.
+
+	\par With a 128 system size the expected behaviour cannot be evidently seen.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\columnwidth]{./128.png}
+		\caption{System with 128 dislocations}
+	\end{figure}
+
+	\section{Final conclusions}
+
+	\par For these few weeks I got acquainted with the SDDDST package and its crooks and crannies.
+	I created several visualizations and extended the code to acquire the required
+	output. I also analyzed log files and tested the code's integrity. Not forgetting to mention
+	that I did this in half the amount of the planned time.
+
+	\par I also contacted my supervisor several times in person and in mail as well. My progress
+	and results were clear for all the time being and I always asked when I got stuck.
+
+	\par I consider my initial goal - finishing early successful and in general I consider this
+	lab useful for those who weren't able to develop self discipline until now to
+	be capable to meet due dates.
+
+	\bibliographystyle{unsrt}
+
+	\bibliography{references}
+
 \end{multicols*}
 \end{document}
