@@ -57,7 +57,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 \renewcommand\thesection{\Roman{section}.}
 \renewcommand\thesubsection{\thesection.\arabic{subsection}.}
 
-\title{Simple Discrete Dislocation Dynamics Toolkit\newline\textbf{Mid term report}}
+\title{Simple Discrete Dislocation Dynamics Toolkit\newline\textbf{Final report}}
 
 \author{\Large{\textsc{Alex Olar}} \vspace{10pt}\\
 	\textrm{University of Eötvös Loránd}
@@ -123,8 +123,8 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 
 	\subsection{Installation}
 
-	\par Installating the software is straightforward on Debian, only some additional packages are required
-	for the process which can be found easilly. These are the following:
+	\par Installing the software is straightforward on Debian, only some additional packages are required
+	for the process which can be found easily. These are the following:
 
 	\begin{itemize}
 		\item g++ or clang
@@ -163,8 +163,8 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 	\subsection{Plotting the stress matrix - setup}
 
 	\par I was able to extract the stress field around a dislocation
-	in the origo. I extended the code with this functionality. The objectum oriented structure
-	helped me to easilly output the field to the standard file stream.
+	in the origo. I extended the code with this functionality. The object oriented structure
+	helped me to easily output the field to the standard file stream.
 
 	\begin{lstlisting}[language=C++]{Name=test2}
 	void PeriodicShearStressELTE::outPutStress(){
@@ -210,7 +210,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 		\caption{Stress field visualization}
 	\end{figure}
 
-	\par While changing N from 1 to 12 in the calculataion of analytic fields results are the
+	\par While changing N from 1 to 12 in the calculation of analytic fields results are the
 	following in order:
 
 	\vspace{1cm}
@@ -269,7 +269,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 	\vspace{1cm}
 
 	\par The difference doesn't really show on the images but getting the
-	consecutive differences of images and displaying that one can achive
+	consecutive differences of images and displaying that one can achieve
 	much better visualization of the fields:
 
 	\begin{figure}[H]
@@ -320,14 +320,14 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 		\item energy of the system
 	\end{itemize}
 
-	\par Where I considered the avarage speed, avarage speed squared and energy variables in the function of time
+	\par Where I considered the average speed, average speed squared and energy variables in the function of time
 	as relevant variables to test the system numerically.
 
 	\par The energy is better described as the energy loss of the system since the system equilibrates
 	and loses energy.
 
 	\par I also saved the output dislocation file where I get the
-	resulting dislocation coordinates but it is not intereting since it cannot
+	resulting dislocation coordinates but it is not interesting since it cannot
 	be decided which point corresponds to which starting location.
 
 	\begin{figure}[H]
@@ -341,7 +341,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 	\begin{itemize}
 		\item in the y-axis the periodic boundary condition can be analytically calculated by summing up infinitely many fields
 		\item in the x-axis N images must be taken into account when the summation of fields is executed since there is no analytic formula
-		\item it can be imagened as field stacking in the x-axis, when a dislocation crosses the simulation boundary on the right hand side it enters the same field stacked after the previous one on the left hand side, therefore the same field acts upon it
+		\item it can be imagined as field stacking in the x-axis, when a dislocation crosses the simulation boundary on the right hand side it enters the same field stacked after the previous one on the left hand side, therefore the same field acts upon it
 	\end{itemize}
 
 	\begin{equation*}
@@ -380,7 +380,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 		\caption{Theoretical $\tau_{xy}$ component}
 	\end{figure}
 
-	\par This resembles to the ELTE field as it should, since the offdiagonal
+	\par This resembles to the ELTE field as it should, since the off-diagonal
 	components are were displayed previously by my visualization programs.
 
 	\begin{minipage}[t]{0.42\columnwidth}
@@ -409,31 +409,31 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 		\item Otherwise the same structure can be seen on both systems.
 	\end{itemize}
 
-	\section{Avaraged inputs analysis}
+	\section{Averaged inputs analysis}
 
 	\par After having acquired the previous results I could move on with feeding
-	the algorith with 10 different dislocation setups each containing 64 dislocations
+	the algorithm with 10 different dislocation setups each containing 64 dislocations
 	randomly generated in a $-0.5$, $0.5$ grid in the x-y plane.
 
-	\par All the systemts ran for different times. Due to this averaging was not straightforward
+	\par All the systems ran for different times. Due to this averaging was not straightforward
 	at all I needed to find the lowest one and average until that one, which ran for $\approx$ 1033.7
-	timesteps defined by the simulation.
+	time-steps defined by the simulation.
 
 	\par I plotted these results as I did previously:
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.95\columnwidth]{all_elte.png}
+		\includegraphics[width=0.99\columnwidth]{all_elte.png}
 		\caption{Each line is a different run with a different input file with the ELTE stress field applied}
 	\end{figure}
 
-	\par Avaraging them took some effort since not all output files had the same row count since
-	timesteps are defined, not time therefore the systems evolve for different but similair
+	\par Averaging them took some effort since not all output files had the same row count since
+	time-steps are defined, not time therefore the systems evolve for different but similar
 	time periods. I took the shortest one and avaraged based on the length of that.
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.95\columnwidth]{all_elte_averaged.png}
+		\includegraphics[width=0.99\columnwidth]{all_elte_averaged.png}
 		\caption{Ten averaged simulations with ELTE field applied}
 		\label{fig:avg}
 	\end{figure}
@@ -441,7 +441,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 	\subsection{Analysis conclusion}
 
 	\par Generally it seems like the system doesn't depend much on
-	the actual dislocations' and they all behave very similairly. Avaraging
+	the actual dislocations' and they all behave very similarly. Averaging
 	more simulations would result in peaks disappearing on \ref{fig:avg} and only the dissipating
 	tendency could be seen.
 
@@ -450,7 +450,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 	\par There is one external stress protocol defined, so far none was used in the previous simulation
 	runs. A fixed rate external stress can be applied and its value defined as an input parameter.
 
-	\par The provied input file for these runs was an earlier output from an equilibrated system.
+	\par The provided input file for these runs was an earlier output from an equilibrated system.
 
 	\par I ran two set-ups with external stress set to $0.1$ and $0.01$. Everything is dimensionless
 	in the simulation so therefore they only have numeric number, but 0.1 is large and 0.01 is not so large.
@@ -459,7 +459,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.95\columnwidth]{all_elte_fixed_0_0_1.png}
+		\includegraphics[width=0.99\columnwidth]{all_elte_fixed_0_0_1.png}
 		\caption{Fixed stress rate - $0.01$}
 	\end{figure}
 
@@ -467,31 +467,32 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 	on a fixed rate on log scale, therefore exponentially more on linear scale. Average
 	speed and speed squared as well.
 
-	\par Raising the external stress results in strange behaviour.
+	\par Raising the external stress results in strange behavior.
 
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=0.95\columnwidth]{all_elte_fixed_0_1.png}
+		\includegraphics[width=0.99\columnwidth]{all_elte_fixed_0_1.png}
 		\caption{Fixed stress rate - $0.1$}
 	\end{figure}
 
-	\par The interesting peaks can be the reuslt of the system starting to behave
-	as a fluid due to the force and continually growing speeds.
+	\par The interesting peaks can be the result of the system starting to behave
+	as a fluid. I only show the regions on both figures which are interesting in this
+	regerd.
 
 	\subsection{Average distance test}
 
 	\par Given a constant external stress the dislocations should get on average closer
-	to each other. At each step I extracted the avarage of minimum pair distances. Meaning that at each step
-	I calculated the minimum pair distances for each dislocation and output the avarage of that to
+	to each other. At each step I extracted the average of minimum pair distances. Meaning that at each step
+	I calculated the minimum pair distances for each dislocation and output the average of that to
 	the standard output.
 
 	\par I used the ELTE stress field, with a $0.01$ external field applied and ran
 	the simulation on 32, 64, 128 random dislocation sets.
 
-	\par I ran them through a simulation to relax the input system and then provied the randomly
+	\par I ran them through a simulation to relax the input system and then provided the randomly
 	generated data as input to the external stress applied run.
 
-	\par The system containing 32 dislocations ran fastly for long maximum time but the one with 64 and 128 were slow to run
+	\par The system containing 32 dislocations ran fast for long maximum time but the one with 64 and 128 were slow to run
 	for even a $100$ limit simulation time.
 
 	\begin{figure}[H]
@@ -501,11 +502,13 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 		\label{fig:32}
 	\end{figure}
 
-	\par On this figure \ref{fig:32} it can be evaluated easilly that the average minimum distances
-	are lowering while there are still these wiggly peaks due to dislocations repenting each other while
-	getting really close.
+	\par On this figure \ref{fig:32} it can be evaluated easily that the average minimum distances
+	are lowering while there are still these wiggly peaks. These are the result of the following effect:
+	some particles are repenting others are attracting each other due to the force they can get so close
+	to each other that they 'jump through' each other and start to repent/attract. When two or more
+	dislocations reach this point these avalance like structures can be observed.
 
-	\par With bigger system sizes data grow fastly and time did not increase that much while this
+	\par With bigger system sizes data grow fast and time did not increase that much while this
 	minimum pair distance lowered less significantly.
 
 	\begin{figure}[H]
@@ -523,9 +526,10 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 
 	\par Where \ref{fig:64} is run for significantly longer (for twice the amount of original run time $100$ provided).
 	Lowering can be seen on these figures but with an expanding system size wiggliness
-	is worsening due to average repulsion.
+	is worsening. The periodic condition can be evidently seen in \ref{fig:64} as particles repent each
+	other but due to the periodic boundary condition they get close to each other again and again.
 
-	\par With a 128 system size the expected behaviour cannot be evidently seen.
+	\par With a 128 system size the expected behavior cannot be evidently seen.
 
 	\begin{figure}[H]
 		\centering
@@ -535,7 +539,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 
 	\section{Final conclusions}
 
-	\par For these few weeks I got acquainted with the SDDDST package and its crooks and crannies.
+	\par For these few weeks I got acquainted with the SDDDST package and its nooks and crannies.
 	I created several visualizations and extended the code to acquire the required
 	output. I also analyzed log files and tested the code's integrity. Not forgetting to mention
 	that I did this in half the amount of the planned time.
@@ -545,7 +549,7 @@ postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
 
 	\par I consider my initial goal - finishing early successful and in general I consider this
 	lab useful for those who weren't able to develop self discipline until now to
-	be capable to meet due dates.
+	be capable of meeting due dates.
 
 	\bibliographystyle{unsrt}
 
